@@ -14,6 +14,7 @@ class SimpleGetHandler(BaseHTTPRequestHandler):
         content = (f"<html>"
                    f"<body>"
                    f"<h1>{message}</h1>"
+                   f"<p>Какой-то боьшой текст</p>"
                    f"</body>"
                    f"</html>")
         return content.encode("utf8")
