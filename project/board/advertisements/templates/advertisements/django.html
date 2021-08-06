@@ -1,12 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>django</title>
-</head>
-<body>
-    <img src="project/board/advertisements/templates/advertisements/img/django.jpg">
+{% extends 'advertisements/general.html' %}
+{% load static %}
+
+{% block title %}
+django
+{% endblock %}
+
+
+{% block body %}
+    <img src="{% static 'advertisements/img/django.jpg' %}">
+    <br>
     <a href=" https://skillbox.ru/course/django-framework/">Страница курса</a>
-    <p>3000 р</p>
-</body>
-</html>
+    <p>5000 р</p>
+{% endblock %}

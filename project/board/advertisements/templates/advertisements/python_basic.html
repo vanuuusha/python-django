@@ -1,12 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>python-basic</title>
-</head>
-<body>
-    <img src="project/board/advertisements/templates/advertisements/img/python-basic.jpg">
+{% extends 'advertisements/general.html' %}
+{% load static %}
+
+{% block title %}
+python-basic
+{% endblock %}
+
+
+{% block body %}
+    <img src="{% static 'advertisements/img/python-basic.jpg' %}">
+    <br>
     <a href="https://skillbox.ru/course/python-basic/">Страница курса</a>
-    <p>3000 р</p>
-</body>
-</html>
+    <p>3500 р</p>
+{% endblock %}
