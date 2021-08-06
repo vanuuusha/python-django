@@ -1,12 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>fronted-developer</title>
-</head>
-<body>
-    <img src="project/board/advertisements/templates/advertisements/img/fronted.jpg">
+{% extends 'advertisements/general.html' %}
+{% load static %}
+
+{% block title %}
+fronted-developer
+{% endblock %}
+
+
+{% block body %}
+    <img src="{% static 'advertisements/img/frontend.jpg' %}">
+    <br>
     <a href="https://skillbox.ru/course/frontend-developer/">Страница курса</a>
-    <p>3000 р</p>
-</body>
-</html>
+    <p>4000 р</p>
+{% endblock %}

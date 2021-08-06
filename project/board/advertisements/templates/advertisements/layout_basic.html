@@ -1,12 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>layout-basic</title>
-</head>
-<body>
-    <img src="img/layout.jpg">
+{% extends 'advertisements/general.html' %}
+{% load static %}
+
+{% block title %}
+layout-basic
+{% endblock %}
+
+
+{% block body %}
+    <img src="{% static 'advertisements/img/layout.jpg' %}">
+    <br>
     <a href="https://skillbox.ru/course/weblayout/">Страница курса</a>
-    <p>3000 р</p>
-</body>
-</html>
+    <p>2500 р</p>
+{% endblock %}

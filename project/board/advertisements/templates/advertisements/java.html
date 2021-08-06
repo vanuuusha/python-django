@@ -1,12 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>layout_advanced</title>
-</head>
-<body>
-    <img src="img/java.jpg">
+{% extends 'advertisements/general.html' %}
+{% load static %}
+
+{% block title %}
+java
+{% endblock %}
+
+
+{% block body %}
+    <img src="{% static 'advertisements/img/java.jpg' %}">
+    <br>
     <a href="https://skillbox.ru/course/java/">Страница курса</a>
     <p>3000 р</p>
-</body>
-</html>
+{% endblock %}
