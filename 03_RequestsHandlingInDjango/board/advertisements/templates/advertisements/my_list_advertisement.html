@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>List Advertisement</title>
+</head>
+<body>
+{% for name, count in now_count.items %}
+    <h3>{{ name }}: {{ count }}</h3>
+{% endfor %}
+
+{% for i_elem in info_list %}
+    <ul>
+        {% for j_elem in i_elem %}
+            <li>{{ j_elem }}</li>
+        {% endfor %}
+    </ul>
+{% endfor %}
+    <ul>
+    <li><a href="/about">about</a></li>
+    <li><a href="/сontacts">сontacts</a></li>
+    </ul>
+</body>
+</html>

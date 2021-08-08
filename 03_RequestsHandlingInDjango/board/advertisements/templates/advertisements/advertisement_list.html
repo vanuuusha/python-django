@@ -1,7 +1,45 @@
-<html>
-<ul>
-    <li>Мастер на час</li>
-    <li>Выведение из запоя</li>
-    <li>Услуги экскаватора-погрузчика, гидромолота, ямобура</li>
-</ul>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'advertisements/style.css' %}">
+    <title>Contacts</title>
+</head>
+<body class="container">
+    <a class="help-link" href="/advertisements">advertisement</a>
+    <form class="form" method="post">
+    <div class="second-cont">
+        <div class="categories">
+            {% for i_elem in categories %}
+                <div class="categories-elem">
+                    <input type="radio" id="categoryChoice" name="category">
+                    <label for="categoryChoice">{{ i_elem }}</label>
+                </div>
+            {% endfor %}
+
+        </div>
+        <div class="region-choice">
+            <label class="region-description" for="regionChoice">Выберите регион</label>
+            <select class="regionChoice" id="regionChoice" name="regions" size="1">
+            {% for i_elem in regions %}
+                <option>{{ i_elem }}</option>
+            {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-text">
+            <label class="textarea-description" for="text">Введите текст объявления</label>
+            <textarea class="form-text-area" rows="10" cols="45" name="text" id="text"></textarea>
+        </div>
+        <div class="form-name">
+            <label for="advertisement_name">Введите название объявления</label>
+            <input type="text" name="advertisement_name" id="advertisement_name">
+        </div>
+    </div>
+        <button class="button" type="submit">Отправить форму</button>
+    </form>
+
+</body>
 </html>
+

@@ -17,7 +17,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
+# See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'bonfg!!3v+mk3%w&&u^xph+%p&u-k0&j2aee+psu6htcd1jqsg'
@@ -48,6 +48,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'board.middleware.bad_ip_block_middleware.FilerIpMiddleware',
+    # 'board.middleware.waiter_middleware.Waiter',
+    # 'board.middleware.ip_request_blocker_middleware.RequestBlocker',
 ]
 
 ROOT_URLCONF = 'board.urls'

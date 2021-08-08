@@ -7,21 +7,24 @@
 <body>
 <h1>Прошел все курсы на Skillbox. Продаю готовые решения!!!</h1>
 <ul>
-    <li>
-        <a href='/python-basic'>Python Basic</a>
-    </li>
-    <li>
-        <a href='/django'>Python-фреймворк Django</a>
-    </li>
-    <li>
-        <a href='/frontend-developer'>frontend Разработчик</a>
-    </li>
-    <li>
-        <a href='/layout-basic'>Веб-верстка «Базовый уровень»</a>
-    </li>
-    <li>
-        <a href='/java'>java - Разработчик</a>
-    </li>
+    {% for key, value in gdz.items %}
+    <li><a href="/{{ key }}">{{ value }}</a></li>
+    {% endfor %}
+</ul>
+<ul>
+    {% for elem in another %}
+    <li><a href="/{{ elem }}">{{ elem }}</a></li>
+    {% endfor %}
+</ul>
+<ul>
+    {% for elem in films %}
+    <li>{{ elem }}</li>
+    {% endfor %}
+</ul>
+<ul>
+    {% for elem in songs %}
+    <li>{{ elem }}</li>
+    {% endfor %}
 </ul>
 </body>
 </html>
