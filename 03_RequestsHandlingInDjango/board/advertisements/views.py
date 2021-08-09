@@ -13,14 +13,15 @@ class MainPage(View):
 
 ip_checker = {}
 
-class ListAdvertisement(View):
+class ListAdvertisement(View):  # TODO Не забывайте про стиль кода по РЕР 8
     def get(self, request):
         ip = request.META.get("REMOTE_ADDR")
         ip_checker[ip] = {'get': ip_checker.get(ip, {'get': 0})['get'], 'post': ip_checker.get(ip, {'post': 0})['post']}
         if request.method == 'GET':
             ip_checker[ip]['get'] += 1
         else:
-            ip_checker[ip]['post'] += 1
+            ip_checker[ip]['post'] += 1  # TODO Не возможно, вы же пишите этот код в методе get() представления который
+                                         #  обрабатывает только GЕТ-запросы. Перенесите это в метод post
         now_count = ip_checker[ip]
         gdz = ['Python Basic', 'Python-фреймворк Django', 'frontend Разработчик', "Веб-верстка «Базовый уровень»", 'java - Разработчик']
         another = ['contacts', 'about-us', 'categories', 'regions']

@@ -96,3 +96,13 @@ date: 2021.8.8 time: 20:34:20 method: GET url: 127.0.0.1:8000/
 date: 2021.8.8 time: 20:35:10 method: GET url: 127.0.0.1:8000/
 date: 2021.8.8 time: 20:35:13 method: GET url: 127.0.0.1:8000/advertisements/
 date: 2021.8.8 time: 20:35:16 method: POST url: 127.0.0.1:8000/
+date: 2021.8.9 time: 8:31:22 method: GET url: 127.0.0.1:8888/
+date: 2021.8.9 time: 8:31:22 method: GET url: 127.0.0.1:8888/favicon.ico
+date: 2021.8.9 time: 8:31:26 method: POST url: 127.0.0.1:8888/
+date: 2021.8.9 time: 8:31:27 method: GET url: 127.0.0.1:8888/favicon.ico
+date: 2021.8.9 time: 8:31:28 method: GET url: 127.0.0.1:8888/
+date: 2021.8.9 time: 8:31:35 method: GET url: 127.0.0.1:8888/advertisements/
+date: 2021.8.9 time: 8:31:40 method: GET url: 127.0.0.1:8888/%D1%81ontacts/
+date: 2021.8.9 time: 8:32:37 method: GET url: 127.0.0.1:8888/advertisements/
+date: 2021.8.9 time: 8:32:38 method: GET url: 127.0.0.1:8888/advertisements/
+date: 2021.8.9 time: 8:33:57 method: GET url: 127.0.0.1:8888/%D1%81ontacts/
