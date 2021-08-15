@@ -11,6 +11,7 @@ class AdvertisementDetailView(DetailView):
     template_name = 'advertisements/detail.html'
     context_object_name = 'adv'
 
+
 class AdvertisementListView(ListView):
     model = Advertisement
     template_name = 'advertisements/list_advertisements.html'
