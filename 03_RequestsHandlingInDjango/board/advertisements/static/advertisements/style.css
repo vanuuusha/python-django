@@ -3,6 +3,18 @@
     max-width: 1270px;
 }
 
+.center {
+    display: block;
+    width: 200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.links {
+    display: flex;
+    justify-content: space-around;
+}
+
 .help-link {
     display: block;
     margin: 0 auto;

@@ -1,7 +1,30 @@
 from django.shortcuts import render
 from django.views import View
 from django.http import HttpResponse
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView, DetailView
+from advertisements.models import Advertisement
+import random
+
+
+class AdvertisementDetailView(DetailView):
+    model = Advertisement
+    template_name = 'advertisements/detail.html'
+    context_object_name = 'adv'
+
+class AdvertisementListView(ListView):
+    model = Advertisement
+    template_name = 'advertisements/list_advertisements.html'
+    context_object_name = 'advertisements'
+    queryset = Advertisement.objects.all()[:5]
+
+
+class RandomAdvertisement(View):
+    def get(self, request):
+        advertisement = Advertisement.objects.order_by('-id')[0]
+        id: int = int(advertisement.id)
+        randomer = random.randint(1, id)
+        advertisement = Advertisement.objects.filter(id=randomer)[0]
+        return render(request, 'advertisements/random_advertisement.html', {'advertisement': advertisement})
 
 
 class MainPage(View):

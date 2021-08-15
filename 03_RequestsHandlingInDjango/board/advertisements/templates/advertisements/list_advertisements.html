@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>List adv</title>
+</head>
+<body>
+    <ul>
+        {% for adv in advertisements %}
+            <li>
+                <a class="title-link" href="/list_adv/{{ adv.id }}">{{ adv.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

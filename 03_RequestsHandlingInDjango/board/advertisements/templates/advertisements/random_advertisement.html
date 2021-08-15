@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>advertisement</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'advertisements/style.css' %}">
+</head>
+<body class="center">
+    title: {{ advertisement.title }}
+    <br>
+    description: {{ advertisement.description }}
+    <br>
+    price: {{ advertisement.price }}
+    <br>
+    views_count: {{ advertisement.views_count }}
+    <br>
+    created: {{ advertisement.created_at }}
+    <br>
+    updated: {{ advertisement.updated_at }}
+</body>
+</html>
