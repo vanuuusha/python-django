@@ -54,7 +54,8 @@ class ListAdvertisement(View):
 
     def post(self, request):
         ip = request.META.get("REMOTE_ADDR")
-        ip_checker[ip] = {'get': ip_checker.get(ip, {'get': 0})['get'], 'post': ip_checker.get(ip, {'post': 0})['post'] + 1}
+        ip_checker[ip] = {'get': ip_checker.get(ip, {'get': 0})['get'],
+                          'post': ip_checker.get(ip, {'post': 0})['post'] + 1}
         return HttpResponse('запрос на создание новой записи успешно выполнен')
 
 
