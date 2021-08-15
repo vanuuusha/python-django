@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'advertisements_app/style.css' %}">
+</head>
+<body>
+    <div class="advertisements">
+        {% for adv in advs %}
+            <div class="advertisements-elem">
+                <a class="advertisements-elem-link" href="/advertisements/{{ adv.id }}">
+                    <p>Название: {{ adv.title }}</p>
+                    <p>Название: {{ adv.price }}</p>
+                    <p>Название: {{ adv.chapter }}</p>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

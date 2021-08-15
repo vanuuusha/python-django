@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Advertisement(models.Model):
     title = models.CharField(max_length=1500, verbose_name='название объявление', db_index=True)
     description = models.TextField(verbose_name='описание объявления')
@@ -16,8 +17,10 @@ class Advertisement(models.Model):
         db_table = 'advertisements'
         ordering = ['id']
 
+
 class AdvertisementStatus(models.Model):
     name = models.CharField(max_length=100)
+
 
 class AdvertisementType(models.Model):
     name = models.CharField(max_length=100)
