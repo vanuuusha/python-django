@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Advertisement, AdvertisementAuthor, AdvertisementChapter
+
+
+@admin.register(Advertisement, AdvertisementAuthor, AdvertisementChapter)
+class AdvertisementAdmin(admin.ModelAdmin):
+    pass

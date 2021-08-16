@@ -17,8 +17,10 @@ class AdvertisementDetail(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        kwargs['object'].views_count = kwargs['object'].views_count + 1
-        kwargs['object'].save()
+        self.object.views_count += 1  # TODO Обращайтесь к атрибуту self.object без kwargs
+        self.object.save()
+        # kwargs['object'].views_count = kwargs['object'].views_count + 1
+        # kwargs['object'].save()
         context['new'] = dollars.in_dollars(kwargs['object'].price)
         return context
 
