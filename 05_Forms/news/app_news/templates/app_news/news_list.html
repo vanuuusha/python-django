@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List_news</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static "app_news/style.css" %}">
+</head>
+<body>
+<h2 class="news-header">Все новости</h2>
+<div class="all-news-block">
+        {% for i in news %}
+        <div class="one-news-block">
+            <a class="news-link" href="/list-news/{{ i.id }}">
+                <p>Название: {{ i.name }}</p>
+                <p>Контент: {{ i.content }}</p>
+                <p>Дата создание: {{ i.date_make }}</p>
+                <p>Дата изменения: {{ i.date_corrected }}</p>
+                <p>Статус: {{ i.flag }}</p>
+            </a>
+        </div>
+        {% endfor %}
+</div>
+<input class="new-btn" type="button" value="Добавить новость" onclick="document.location='/add-news'" />
+</body>
+</html>

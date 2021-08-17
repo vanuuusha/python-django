@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>detail</title>
+</head>
+<body>
+    <h2>Содержание новости</h2>
+    <div class="new-block">
+        <p>Название: {{ new.name }}</p>
+        <p>Контент: {{ new.content }}</p>
+        <p>Дата создание: {{ new.date_make }}</p>
+        <p>Дата изменения: {{ new.date_corrected }}</p>
+        <p>Статус: {{ new.flag }}</p>
+        <h2>Комментарии</h2>
+        {% for i in comments %}
+            <div class="comment-block">
+                <p>Автор: {{ i.author }}</p>
+                <p>Текст комментария: {{ i.content }}</p>
+            </div>
+        {% endfor %}
+        <form method="post">
+            {% csrf_token %}
+            {{ comment_form.as_p }}
+            <button type="submit" class="btn-detail">Добавить комментарий</button>
+        </form>
+    </div>
+</body>
+</html>
