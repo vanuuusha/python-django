@@ -21,7 +21,17 @@
         {% endfor %}
         <form method="post">
             {% csrf_token %}
-            {{ comment_form.as_p }}
+            {% for field in comment_form %}
+                {{field.label_tag}}
+                <div>{{field}}</div>
+                {% if field.errors%}
+                    {% for error in field.errors %}
+                        <div class="alert alert-danger">
+                            {{error}}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
             <button type="submit" class="btn-detail">Добавить комментарий</button>
         </form>
     </div>
