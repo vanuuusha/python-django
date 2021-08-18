@@ -18,3 +18,5 @@ class AddCommentForm(forms.ModelForm):
     #     author = self.cleaned_data['author']
     #     if author == 'aaaa':
     #         raise ValidationError('Автор не подходит')
+    # TODO Метод должен вернуть "ощищенные" данные:
+    #  https://docs.djangoproject.com/en/3.2/ref/forms/validation/#cleaning-a-specific-field-attribute
