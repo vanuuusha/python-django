@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class NewsFlag(models.Model):
@@ -13,9 +14,9 @@ class NewsFlag(models.Model):
 
 
 class News(models.Model):
-    name = models.CharField(max_length=30)
-    content = models.TextField(max_length=3000)
-    date_make = models.DateTimeField(auto_now_add=True)
+    name = models.CharField(max_length=30, verbose_name='название новости')
+    content = models.TextField(max_length=3000, verbose_name='содержимое новости')
+    date_make = models.DateTimeField(auto_now_add=True, verbose_name='дата публикации новости')
     date_corrected = models.DateTimeField(auto_now=True)
     flag = models.ForeignKey(NewsFlag, related_name='News', null=True, default=None,
                              on_delete=models.CASCADE)
@@ -29,9 +30,12 @@ class News(models.Model):
 
 
 class Comment(models.Model):
-    author = models.CharField(max_length=30)
-    content = models.TextField(max_length=300)
-    news = models.ForeignKey(News, related_name='Comment', on_delete=models.CASCADE)
+    author = models.CharField(max_length=30, verbose_name='имя автора')
+    content = models.TextField(max_length=300, verbose_name='содержимое комментария')
+    news = models.ForeignKey(News, related_name='Comment', on_delete=models.CASCADE, default=None,
+                             null=None)
+    user = models.ForeignKey(User, related_name='User', on_delete=models.CASCADE, default=None,
+                             null=None)
 
     def __str__(self):
         return f'{self.author}'

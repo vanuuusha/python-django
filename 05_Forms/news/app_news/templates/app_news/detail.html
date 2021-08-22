@@ -13,25 +13,38 @@
         <p>Дата изменения: {{ new.date_corrected }}</p>
         <p>Статус: {{ new.flag }}</p>
         <h2>Комментарии</h2>
+
         {% for i in comments %}
             <div class="comment-block">
                 <p>Автор: {{ i.author }}</p>
                 <p>Текст комментария: {{ i.content }}</p>
             </div>
         {% endfor %}
+
         <form method="post">
             {% csrf_token %}
-            {% for field in comment_form %}
-                {{field.label_tag}}
-                <div>{{field}}</div>
-                {% if field.errors%}
-                    {% for error in field.errors %}
+            {% if request.user.is_anonymous %}
+                {{ comment_form.author.label_tag }}
+                <div>{{ comment_form.author }}</div>
+                {% if comment_form.author.errors %}
+                    {% for error in comment_form.author.errors %}
                         <div class="alert alert-danger">
                             {{error}}
                         </div>
                     {% endfor %}
                 {% endif %}
-            {% endfor %}
+            {% endif %}
+
+            {{ comment_form.content.label_tag }}
+                <div>{{ comment_form.content }}</div>
+                {% if comment_form.content.errors %}
+                    {% for error in comment_form.content.errors %}
+                        <div class="alert alert-danger">
+                            {{error}}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
             <button type="submit" class="btn-detail">Добавить комментарий</button>
         </form>
     </div>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>main</title>
+</head>
+<body>
+    {% if request.user.is_authenticated %}
+        <h3>Добро пожаловать на сайт {{ request.user.username }}</h3>
+    {% else %}
+        <a href="/users/login">Войти на сайт</a>
+    {% endif %}
+    <h2>Я главная страница</h2>
+</body>
+</html>

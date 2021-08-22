@@ -9,7 +9,7 @@ class AddNewsForm(forms.ModelForm):
         fields = '__all__'
 
 
-class AddCommentForm(forms.ModelForm):
+class AddCommentFormAnon(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ['author', 'content']
@@ -20,3 +20,9 @@ class AddCommentForm(forms.ModelForm):
             raise ValidationError('Автор не подходит')
 
         return author
+
+
+class AddCommentFormAuth(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['content']
