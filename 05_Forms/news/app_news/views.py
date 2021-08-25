@@ -71,5 +71,5 @@ class AddNews(View):
 
 class Main(View):
     def get(self, request):
-        return render(request, 'app_news/main.html', {})
+        return render(request, 'app_news/pattern.html', {})
         

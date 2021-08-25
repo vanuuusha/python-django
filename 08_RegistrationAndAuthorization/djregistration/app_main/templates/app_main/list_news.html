@@ -1,0 +1,23 @@
+{% extends "app_main/pattern.html" %}
+{% block header %}
+        {% if perm %}
+        <a href="/create-news">Создать свою новость</a>
+            {% else %}
+            <p>Новости могут создавать только верифицированный пользователи</p>
+        {% endif %}
+        {% if moder %}
+        <a href="/moderator-list-news/">Проверка новостей</a>
+        {% endif %}
+{% endblock %}
+
+{% block content %}
+    <div>
+    {% for new in news %}
+        <a href="{{ new.id }}">
+            <p>{{ new.title }}</p>
+            <p>{{ new.description }}</p>
+            <p>{{ new.author }}</p>
+        </a>
+    {% endfor %}
+    </div>
+{% endblock %}

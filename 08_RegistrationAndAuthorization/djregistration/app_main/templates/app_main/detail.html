@@ -1,0 +1,26 @@
+{% extends "app_main/pattern.html" %}
+
+{% block content %}
+    <h2>Новость: </h2>
+    <p>Заголовок: {{ new.title }}</p>
+    <p>Описание: {{ new.description }}</p>
+    <p>Автор: {{ new.author }}</p>
+
+    <h2>Комментарии:</h2>
+    {% for comment in comments %}
+        <p>Автор: {{ comment.author }}</p>
+        <p>Содержимое: {{ comment.content }}</p>
+    {% endfor %}
+
+    <h2>Добавить комментарий:</h2>
+    {% if can_add %}
+    <form method="post">
+    {% csrf_token %}
+        <p>Имя: {{ request.user.username }}</p>
+        <p>Текст комментария: {{ form.content }}</p>
+    <button type="submit">Отправить</button>
+    </form>
+    {% else %}
+        <p>Только авторизованные пользователи могут оставлять комментарии</p>
+    {% endif %}
+{% endblock %}

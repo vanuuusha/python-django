@@ -1,10 +1,12 @@
 from django.shortcuts import render
-from .forms import AuthForm
+from .forms import AuthForm, MyUserCreationForm
 from django.views import View
 from django.contrib.auth import authenticate, login, logout
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 import datetime
-from django.contrib.auth.views import LoginView
+from .models import Profile
+# from django.contrib.auth.views import LoginView
+# from django.contrib.auth.models import User
 
 
 class Auth(View):
@@ -48,4 +50,44 @@ class Auth(View):
 
 def logout_view(request):
     logout(request)
-    return HttpResponse('Вы успешно вышли из аккаунта')
+    return HttpResponseRedirect('/')
+
+
+class AccountView(View):
+
+    def get(self, request):
+        return render(request, 'app_users/account.html')
+
+
+class RegistrationView(View):
+
+    def get(self, request):
+        form = MyUserCreationForm()
+        return render(request, 'app_users/register.html', {'form': form})
+
+    def post(self, request):
+        form = MyUserCreationForm(request.POST)
+        if not request.user.is_anonymous:
+            form.add_error('__all__', 'Вы уже зарегистрированы')
+        if form.is_valid() and request.user.is_anonymous:
+            user = form.save()
+            date_of_birth = form.cleaned_data.get('date_of_birth')
+            city = form.cleaned_data.get('city')
+            card = form.cleaned_data.get('card')
+            telephone = form.cleaned_data.get('telephone')
+
+            Profile.objects.create(
+                user=user,
+                date_of_birth=date_of_birth,
+                city=city,
+                card=card,
+                telephone=telephone,
+            )
+
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return HttpResponseRedirect('/')
+        return render(request, 'app_users/register.html', {'form': form})
+            

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+{% if request.user.is_anonymous %}
+    <div class="header-container">
+    <a href="/users/login">Войти</a>
+    <a href="/users/registration">Зарегистрироваться</a>
+    <a href="/list-news">Список новостей</a>
+    </div>
+{% else %}
+    <div class="header-reg-container">
+    <p>Добро пожаловать {{ request.user.username }} из {{ request.user.userprofile.city }}</p>
+    <a class="logout-href" href="/users/logout">Выйти</a>
+    <a class="account-href" href="/users/profile">Профиль</a>
+    <a href="/list-news">Список новостей</a>
+    {% block header %}
+
+    {% endblock %}
+    </div>
+{% endif %}
+{% block content %}
+
+{% endblock %}
+</body>
+</html>

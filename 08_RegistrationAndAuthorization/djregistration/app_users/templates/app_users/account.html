@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Account</title>
+</head>
+<body>
+    <p>Имя пользователя: {{ request.user.username }}</p>
+    <p>Город: {{ request.user.userprofile.city }}</p>
+    <p>Телефон: {{ request.user.userprofile.telephone }}</p>
+    {% if request.user.userprofile.flag %}
+        <p>Верификация: да</p>
+    {% else %}
+        <p>Верификация: нет</p>
+    {% endif %}
+    <p>Количество опубликованных новостей: {{ request.user.userprofile.count_published_news }}</p>
+    <a href="/">На главную</a>
+</body>
+</html>

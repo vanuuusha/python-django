@@ -9,6 +9,7 @@
         <h3>Добро пожаловать на сайт {{ request.user.username }}</h3>
     {% else %}
         <a href="/users/login">Войти на сайт</a>
+        <a href="/users/registration">Зарегистрироваться</a>
     {% endif %}
     <h2>Я главная страница</h2>
 </body>

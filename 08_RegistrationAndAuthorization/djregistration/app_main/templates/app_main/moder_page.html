@@ -1,0 +1,31 @@
+{% extends "app_main/pattern.html" %}
+{% block header %}
+        {% if perm %}
+        <a href="/create-news">Создать свою новость</a>
+            {% else %}
+            <p>Новости могут создавать только верифицированный пользователи</p>
+        {% endif %}
+        {% if moder %}
+        <a href="/moderator-list-news/">Проверка новостей</a>
+        {% endif %}
+{% endblock %}
+
+{% block content %}
+    {% if news %}
+    <div>
+    {% for new in news %}
+            <p>{{ new.title }}</p>
+            <p>{{ new.description }}</p>
+            <p>{{ new.author }}</p>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Сделать</button>
+            </form>
+    {% endfor %}
+    </div>
+        {% else %}
+        <p>Нет новостей на проверку</p>
+    {% endif %}
+
+{% endblock %}

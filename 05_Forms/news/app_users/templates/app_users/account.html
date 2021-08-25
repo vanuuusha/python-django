@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Acount-page</title>
+</head>
+<body>
+    <h2>Ваши данные</h2>
+    <p>Имя пользователя: {{ request.user.username }}</p>
+    <p>Почта: {{ request.user.email }}</p>
+    <p>Имя {{ request.user.first_name  }}</p>
+    <p>Фамилия: {{ request.user.last_name  }}</p>
+    <p>Дата рождения: {{ request.user.profile.date_of_birth }}</p>
+    <p>Телефон: {{ request.user.profile.telephone }}</p>
+    <p>Город: {{ request.user.profile.city }}</p>
+</body>
+</html>
