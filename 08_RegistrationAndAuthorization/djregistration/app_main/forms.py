@@ -14,8 +14,8 @@ class NewsForm(forms.ModelForm):
         fields = ['title', 'description']
 
 
-class ModerForm(forms.Form):
-    CHOICES = [('delete', 'delete'),
-               ('publish', 'publish')]
-
-    what_do = forms.ChoiceField(choices=CHOICES, widget=forms.RadioSelect)
+# class ModerForm(forms.Form):
+#     CHOICES = [('delete', 'delete'),
+#                ('publish', 'publish')]
+#
+#     what_do = forms.ChoiceField(choices=CHOICES, widget=forms.RadioSelect)

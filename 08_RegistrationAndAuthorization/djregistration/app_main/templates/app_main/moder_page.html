@@ -17,9 +17,12 @@
             <p>{{ new.title }}</p>
             <p>{{ new.description }}</p>
             <p>{{ new.author }}</p>
-            <form method="post">
+            <form action="/moderator-list-news/" method="post">
                 {% csrf_token %}
-                {{ form.as_p }}
+                <select size="1" name="news_select/{{ new.id }}">
+                    <option value="d">Удалить</option>
+                    <option value="p">Опубликовать</option>
+                </select>
                 <button type="submit">Сделать</button>
             </form>
     {% endfor %}

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views import View
 from .models import News, Comment
-from .forms import CommentForm, NewsForm, ModerForm
+from .forms import CommentForm, NewsForm # ModerForm
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import Group
 
@@ -77,9 +77,9 @@ class ModeratorView(View):
         if request.user.has_perm('app_main.add_news'):
             perm = moder = True
             news = News.objects.filter(published=False)
-            form = ModerForm()
+            # form = ModerForm()
             return render(request, 'app_main/moder_page.html', {'perm': perm, 'moder': moder,
-                                                                'news': news, 'form': form})
+                                                                'news': news})
 
         return HttpResponse(
                 '<p>Вы не модератор, как вы нашли эту ссылку???</p>'
@@ -87,7 +87,38 @@ class ModeratorView(View):
             )
 
     def post(self, request):
-        pass
+        valid = False
+        for now_key in request.POST.keys():
+            if now_key.startswith('news_select/'):
+                id = int(now_key[-1])
+                what_do = request.POST.get(now_key)
+                break
+        else:
+            return HttpResponse(
+                '<p>Что-то пошло не так</p>'
+                '<a href="/">Вернуться на главную</a>'
+            )
+        new = News.objects.filter(id=id)[0]
+        if what_do == 'd': # использую сокращения чтоб не нагружать
+            new.delete()
+
+            perm = moder = True
+            news = News.objects.filter(published=False)
+            return render(request, 'app_main/moder_page.html', {'perm': perm, 'moder': moder,
+                                                                'news': news})
+        elif what_do == 'p':
+            new.published = True
+            new.save()
+
+            perm = moder = True
+            news = News.objects.filter(published=False)
+            return render(request, 'app_main/moder_page.html', {'perm': perm, 'moder': moder,
+                                                                'news': news})
+        else:
+            return HttpResponse(
+                '<p>Ошибка на стороне сервера</p>'
+                '<a href="/">Вернуться на главную</a>'
+            )
     # а как тут выбирать, какую именно новость опубликовать/удалить?
     # TODO В шаблоне надо вывести все каждую новость со своим элементом <select> c одним выбором, а в этом методе надо
     #  получить данные о выборе пользователя и выполнить необходимые действия над каждой новостью. Чтобы
