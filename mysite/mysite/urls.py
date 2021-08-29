@@ -1,4 +1,4 @@
-"""board URL Configuration
+"""mysite URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.2/topics/http/urls/
@@ -18,7 +18,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('forms/', include('forms.urls')),
-    path('media/', include('media.urls')),
-    path('', include('advertisements.urls'))
+    path('goods/', include('app_goods.urls'))
 ]

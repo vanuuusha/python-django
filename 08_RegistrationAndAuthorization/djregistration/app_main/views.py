@@ -87,7 +87,6 @@ class ModeratorView(View):
             )
 
     def post(self, request):
-        valid = False
         for now_key in request.POST.keys():
             if now_key.startswith('news_select/'):
                 id = int(now_key[-1])

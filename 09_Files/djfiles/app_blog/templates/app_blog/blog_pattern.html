@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>blog_pattern</title>
+</head>
+<body>
+    <div>
+        <a href="/">На главную</a>
+
+        {% if request.user.is_authenticated %}
+            <p>Добро пожаловать {{ request.user.username }}</p>
+            <a href="/add_blog/">Добавить свой blog</a>
+        {% endif %}
+    </div>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

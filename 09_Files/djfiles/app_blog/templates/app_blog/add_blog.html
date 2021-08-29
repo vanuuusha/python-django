@@ -1,0 +1,10 @@
+{% extends "app_blog/blog_pattern.html" %}
+{% block content %}
+    <h2>Добавить блог</h2>
+    <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <p>Author: {{ author }}</p>
+    {{ form.as_p }}
+    <button type="submit">Отправить</button>
+    </form>
+{% endblock %}

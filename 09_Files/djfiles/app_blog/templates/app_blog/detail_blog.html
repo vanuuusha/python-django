@@ -1,0 +1,12 @@
+{% extends "app_blog/blog_pattern.html" %}
+{% block content %}
+    <div>
+        <p>Автор: {{ blog.author }}</p>
+        <p>Заголовок: {{ blog.title }}</p>
+        <p>Контент: {{ blog.content }}</p>
+        {% for img in blog.files.all %}
+            <img alt="1234" src="{{ MEDIA_URL }}">
+            <img alt="123" src="{{ url }}{{ img.file_field }}">
+        {% endfor %}
+    </div>
+{% endblock %}

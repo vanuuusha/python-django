@@ -1,0 +1,16 @@
+{% extends "app_blog/blog_pattern.html" %}
+{% block content %}
+    {% for blog in blogs %}
+      <div>
+      <a href="/blog/{{ blog.id }}/">
+            <p>Автор: {{ blog.author }}</p>
+          <p>Заголовок: {{ blog.title }}</p>
+          {% if blog.content|length > 100 %}
+            <p>Контент: {{ blog.content|slice:':100' }}...</p>
+          {% else %}
+              <p>Контент: {{ blog.content }}</p>
+          {% endif %}
+      </a>
+      </div>
+    {% endfor %}
+{% endblock %}
