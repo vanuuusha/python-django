@@ -1,0 +1,14 @@
+{% extends "app_blog/blog_pattern.html" %}
+{% block content %}
+    <p>
+        Шаблон:<br>
+        "Заголовок: Контент,"<br>
+        "Заголовок: Контент,"<br>
+        "Заголовок: Контент,"
+    </p>
+    <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+        {{ form.as_p }}
+    <button type="submit">Отправить файл</button>
+    </form>
+{% endblock %}

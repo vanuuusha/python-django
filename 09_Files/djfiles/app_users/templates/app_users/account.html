@@ -1,6 +1,14 @@
 {% extends "app_users/patern_users.html" %}
 {% block content %}
-    <form method="post" action="/users/account/">
+    <p>Ваш аватар:</p>
+        {% if request.user.profile.avatar %}
+            <img src="{{ url }}{{ request.user.profile.avatar }}">
+        {% else %}
+            <p>У вас нет автара</p>
+            <img src="{{ url }}avatars/anon.jpg">
+        {% endif %}
+    </form>
+    <form method="post" action="/users/account/" enctype="multipart/form-data">
     {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Редактировать</button>

@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from .models import Blog, FileForBlog
 from django.views import View
-from .forms import AddBlogForm
+from .forms import AddBlogForm, AddBlogFileForm
 from django.http import HttpResponseRedirect
 from django.conf import settings
+
 
 class ListBlogView(View):
     def get(self, request):
@@ -49,3 +50,28 @@ class DetailBlogView(View):
         blog = Blog.objects.get(id=blog_id)
         context = {'blog': blog, 'url': settings.MEDIA_URL}
         return render(request, 'app_blog/detail_blog.html', context=context)
+
+
+class AddBlogFile(View):
+    def get(self, request):
+        if request.user.is_authenticated:
+            form = AddBlogFileForm()
+            return render(request, 'app_blog/add_file_blog.html', context={'form': form})
+        return HttpResponseRedirect('/')
+
+    def post(self, request):
+        form = AddBlogFileForm(request.POST, request.FILES)
+        if not request.FILES.getlist('file')[0].name.endswith('.txt'):
+            form.add_error('__all__', 'Допустимы только .txt файлы')
+        elif form.is_valid():
+            file = request.FILES.getlist('file')[0].read().decode('utf-8').split(',\r\n')
+            for i in file:
+                i = i.split(':')
+                Blog.objects.create(
+                    author=request.user.username,
+                    title=i[0],
+                    content=i[1],
+                )
+            return HttpResponseRedirect('/')
+
+        return render(request, 'app_blog/add_file_blog.html', context={'form': form})

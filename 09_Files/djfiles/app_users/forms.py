@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from .models import Profile
 
 
 class AuthForm(forms.Form):
@@ -21,6 +22,11 @@ class AccountRadactForm(forms.ModelForm):
     first_name = forms.CharField(required=True)
     last_name = forms.CharField(required=True)
     telephone = forms.CharField(max_length=12, required=True)
+    avatar = forms.FileField(required=False)
+
+    class Meta:
+        model = Profile
+        fields = ('avatar',)
 
     def save(self, *args, **kwargs):
         super(AccountRadactForm, self).save(*args, **kwargs)

@@ -5,6 +5,7 @@ from django.views import View
 from .forms import AuthForm, CreateUserForm, AccountRadactForm
 from django.http import HttpResponseRedirect
 from .models import Profile
+from django.conf import settings
 
 
 class UserLogin(View):
@@ -68,17 +69,23 @@ class AccountView(View):
             form = AccountRadactForm(instance=request.user, initial={
                 'telephone': request.user.profile.telephone,
             })
-            context = {'form': form}
+            context = {'form': form, 'url': settings.MEDIA_URL}
             return render(request, 'app_users/account.html', context=context)
         return HttpResponseRedirect('/')
 
     def post(self, request):
         form = AccountRadactForm(request.POST, request.FILES, instance=request.user, initial={
-                'telephone': request.user.profile.telephone,
+            'telephone': request.user.profile.telephone,
             })
+        if request.FILES.getlist('avatar'):
+            file = request.FILES.getlist('avatar')[0]
+            if request.user.profile.avatar:
+                request.user.profile.avatar.delete()
+                request.user.profile.save()
+            request.user.profile.avatar = file
+            request.user.profile.save()
         if form.is_valid():
             form.save()
-
             return HttpResponseRedirect('/users/account/')
 
         context = {'form': form}

@@ -9,8 +9,9 @@
         <a href="/">На главную</a>
 
         {% if request.user.is_authenticated %}
-            <p>Добро пожаловать {{ request.user.username }}</p>
+            <p>Добро пожаловать <a href="/users/account/">{{ request.user.username }}</a></p>
             <a href="/add_blog/">Добавить свой blog</a>
+            <a href="/add_blog_file/">Добавить с помощью файла</a>
         {% endif %}
     </div>
     {% block content %}
